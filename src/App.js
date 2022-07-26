@@ -4,16 +4,15 @@ import { CssBaseline } from "@mui/material";
 
 import Footer from 'components/Footer/Footer';
 import Landing from "pages/Landing/Landing";
+import Campaigns from "pages/Campaigns/Campaigns";
 //import Admin from "pages/Admin";
 //import DiceTableAdmin from "pages/DiceTable/DiceTableAdmin";
 //import DiceTable from "pages/DiceTable";
 
 import * as routes from "config/routes"
-import './App.css';
 
 function Admin() { return <div>Admin</div> }
 function Blog() { return <div>Blog</div> }
-function Campaigns() { return <div>Campagnes</div> }
 function DiceTableAdmin() { return <div>Dice Table Admin</div> }
 function DiceTable() { return <div>Dice Table</div> }
 

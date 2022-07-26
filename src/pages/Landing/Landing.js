@@ -4,6 +4,7 @@ import { Container, Grid, Typography, Link } from '@mui/material';
 import useStyles from './Landing_css';
 import * as routes from "config/routes";
 import blogimg from "assets/blog.png";
+import campaignimg from "assets/books.png"
 
 export default function Landing() {
   const classes = useStyles();
@@ -47,7 +48,7 @@ export default function Landing() {
               <Link className={classes.cardLink} href={routes.CAMPAIGNS}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image={blogimg}
+                  image={campaignimg}
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h6" component="h2">
