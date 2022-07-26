@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
+
+import Footer from 'components/Footer/Footer';
+import Landing from "pages/Landing/Landing";
+//import Admin from "pages/Admin";
+//import DiceTableAdmin from "pages/DiceTable/DiceTableAdmin";
+//import DiceTable from "pages/DiceTable";
+
+import * as routes from "config/routes"
 import './App.css';
+
+function Admin() { return <div>Admin</div> }
+function Blog() { return <div>Blog</div> }
+function Campaigns() { return <div>Campagnes</div> }
+function DiceTableAdmin() { return <div>Dice Table Admin</div> }
+function DiceTable() { return <div>Dice Table</div> }
+
+function LandingRoutes() {
+  return (
+    <Routes>
+      <Route path={routes.DICETABLEBASE} element={<DiceTableAdmin />} />
+      <Route path={routes.DICETABLE} element={<DiceTable />} />
+      <Route path={routes.DICE_TEST} element={<DiceTable />} />
+      <Route path={routes.ABOUT} element={<Landing />} />
+      <Route path={routes.GM} element={<Admin />} />
+      <Route path={routes.CAMPAIGNS} element={<Campaigns />} />
+      <Route path={routes.BLOG} element={<Blog />} />
+      <Route path={routes.ROOT} element={<Landing />} />
+    </Routes>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <main className="mainWrapper">
+        <LandingRoutes />
+      </main>
+      <footer className="footerWrapper">
+        <Footer />
+      </footer>
+    </Router>
   );
 }
 
