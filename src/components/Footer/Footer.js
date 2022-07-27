@@ -24,22 +24,28 @@ export default function Footer() {
     <div className={classes.pageFooter}>
       <Grid container className={classes.footerLinks}>
         <Grid item xs={12} sm={6} className={classes.logoImage}>
-          <img src="logo192.png" alt="" width='64' />
-          <Typography variant="body1">La Bonne Auberge</Typography>
-          <Typography variant="body2">
-              Copyright © La Bonne Auberge (2020-{(new Date().getFullYear())})
-          </Typography>
+          <Link className={classes.decoratedLink} to={routes.ROOT}>
+            <img src="logo192.png" alt="" width='64' />
+            <Typography variant="body1">La Bonne Auberge</Typography>
+            <Typography variant="body2">
+                Copyright © La Bonne Auberge (2020-{(new Date().getFullYear())})
+            </Typography>
+          </Link>
         </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="button">Liens</Typography>
-          <Typography variant="body1">Blog</Typography>
-          <DecoratedLink to={routes.ROOT}>Campagnes</DecoratedLink>
-          <DecoratedLink to={routes.ABOUT}>A propos</DecoratedLink>
+        <Grid item xs={6} sm={3}>
+          <Typography variant="button">Blog</Typography>
+          <DecoratedLink to={routes.BLOG}>Accueil</DecoratedLink>
+          <DecoratedLink to={routes.BLOGCAMP}>Campagnes</DecoratedLink>
+          <DecoratedLink to={routes.BLOGOS}>One-Shots</DecoratedLink>
+          <DecoratedLink to={routes.BLOGMOD}>Modules</DecoratedLink>
+          <DecoratedLink to={routes.BLOGGUI}>Guides</DecoratedLink>
+          <DecoratedLink to={routes.BLOGAB}>A Propos</DecoratedLink>
         </Grid>
-        <Grid item xs={12} sm={3}>
-          <Typography variant="button">Outils</Typography>
-          <DecoratedLink to={routes.DICETABLEBASE}>Plateau de dés</DecoratedLink>
+        <Grid item xs={6} sm={3}>
+          <Typography variant="button">Campagnes</Typography>
+          <DecoratedLink to={routes.CAMPAIGNS}>Journaux</DecoratedLink>
           <DecoratedLink to={routes.GM}>Espace MJ</DecoratedLink>
+          <DecoratedLink to={routes.DICETABLEBASE}>Plateau de dés</DecoratedLink>
         </Grid>
       </Grid>
       <div className={classes.footerNotice}>

@@ -21,11 +21,12 @@ function LandingRoutes() {
     <Routes>
       <Route path={routes.DICETABLEBASE} element={<DiceTableAdmin />} />
       <Route path={routes.DICETABLE} element={<DiceTable />} />
-      <Route path={routes.DICE_TEST} element={<DiceTable />} />
-      <Route path={routes.ABOUT} element={<Landing />} />
       <Route path={routes.GM} element={<Admin />} />
       <Route path={routes.CAMPAIGNS} element={<Campaigns />} />
-      <Route path={routes.BLOG} element={<Blog />} />
+      <Route path={routes.BLOG}>
+        <Route index element={<Blog />} />
+        <Route path=':page' element={<Blog />} />
+      </Route>
       <Route path={routes.ROOT} element={<Landing />} />
     </Routes>
   );
