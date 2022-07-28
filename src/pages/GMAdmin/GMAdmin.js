@@ -7,11 +7,7 @@ import useStyles from './GMAdmin_css';
 
 import AppBar from 'components/AppBar/AppBar';
 import { Unauthorized, UnauthorizedGM } from 'components/Unauthorized/Unauthorized';
-//import AuthorizedAdmin from './AuthorizedAdmin';
-
-function AuthorizedAdmin() {
-  return <div>AuthorizedAdmin</div>
-}
+import AuthorizedAdmin from './AuthorizedAdmin';
 
 export default function GMAdmin() {
   const [isGM, setIsGM] = useState(false);

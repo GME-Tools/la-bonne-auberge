@@ -33,6 +33,8 @@ class Firebase {
     this.storage = getStorage(this.app);
   }
 
+  getNow = () => this.db.Timestamp.now();
+  
   // Auth
   authUser = () => this.auth.currentUser;
   doSignIn = () => signInWithPopup(this.auth, this.provider);
@@ -55,6 +57,7 @@ class Firebase {
   getSystems = () => getDocs(collection(this.db, 'systems'));
   getSystem = system => this.getDocument('systems', system);
 
+  addCampaign = (data) => this.addDocument('campaigns', data);
   updateCampaign = (id, data) => this.setDocument('campaigns', id, data);
   updateGMName = (uid, name) => this.setDocument('users', uid, { name: name });
 
