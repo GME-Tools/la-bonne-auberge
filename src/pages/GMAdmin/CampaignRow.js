@@ -36,14 +36,14 @@ export default function CampaignRow(props) {
       firebase.updateFile("pdf/" + props.row.id + '.pdf', pdf).then(
         () => setUploadingPdf(false))
     }
-  }, [firebase, uploadingPdf, pdf])
+  }, [firebase, uploadingPdf, pdf, props.row.id])
 
   useEffect(() => {
     if (uploadingImage) {
       firebase.updateFile("images/" + props.row.id, image).then(
         () => setUploadingImage(false))
     }
-  }, [firebase, uploadingImage, image])
+  }, [firebase, uploadingImage, image, props.row.id])
 
   useEffect(() => {
     if (updateData) {
@@ -52,7 +52,7 @@ export default function CampaignRow(props) {
         props.onUpdate();
       })
     }
-  }, [firebase, updateData])
+  }, [firebase, updateData, props.row.id, props.onUpdate])
 
   const disableInteraction = () => {
     return uploadingImage || uploadingPdf || updateData
