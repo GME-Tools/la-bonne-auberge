@@ -128,11 +128,11 @@ export default function AuthorizedAdmin() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {/*
+            {
               Object.keys(campaigns).map((key) => 
                 <CampaignRow key={campaigns[key].name} row={campaigns[key]} onUpdate={()=>updateData()}/>
               )
-            */}
+            }
           </TableBody>
         </Table>
       </TableContainer>
