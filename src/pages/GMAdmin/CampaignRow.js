@@ -6,8 +6,8 @@ import { IconButton, InputLabel, MenuItem } from '@mui/material';
 import { Select, TextField, Typography } from '@mui/material';
 import { TableCell, TableRow } from '@mui/material';
 
-import KeyboardArrowDownIcon from '@mui/icons-material';
-import KeyboardArrowUpIcon from '@mui/icons-material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import { useFirebase } from 'context/FirebaseContext';
 import useStyles from './GMAdmin_css';
@@ -26,24 +26,24 @@ export default function CampaignRow() {
   const firebase = useFirebase();
 
   useEffect(() => {
-    firebase.getSystems().then(docs=>
-      docs.forEach(doc => (setSystems(s => ({...s, [doc.id]: doc.data()}))))
+    firebase.getSystems().then(docs =>
+      docs.forEach(doc => (setSystems(s => ({ ...s, [doc.id]: doc.data() }))))
     );
   }, [firebase]);
 
   useEffect(() => {
     if (uploadingPdf) {
-      firebase.updateFile("pdf/"+props.row.id+'.pdf',pdf).then(
-        ()=>setUploadingPdf(false))
+      firebase.updateFile("pdf/" + props.row.id + '.pdf', pdf).then(
+        () => setUploadingPdf(false))
     }
-  }, [firebase,uploadingPdf,pdf])
+  }, [firebase, uploadingPdf, pdf])
 
   useEffect(() => {
     if (uploadingImage) {
-      firebase.updateFile("images/"+props.row.id,image).then(
-        ()=>setUploadingImage(false))
+      firebase.updateFile("images/" + props.row.id, image).then(
+        () => setUploadingImage(false))
     }
-  }, [firebase,uploadingImage,image])
+  }, [firebase, uploadingImage, image])
 
   useEffect(() => {
     if (updateData) {
@@ -52,7 +52,7 @@ export default function CampaignRow() {
         props.onUpdate();
       })
     }
-  }, [firebase,updateData])
+  }, [firebase, updateData])
 
   const disableInteraction = () => {
     return uploadingImage || uploadingPdf || updateData
@@ -64,13 +64,13 @@ export default function CampaignRow() {
     let doc_ref = props.row.pdf;
     if (pdf) {
       mustUpdate = true;
-      doc_ref = "pdf/"+props.row.id+'.pdf';
+      doc_ref = "pdf/" + props.row.id + '.pdf';
       setUploadingPdf(true);
     }
 
     if (image) {
       mustUpdate = true;
-      img_ref = "images/"+props.row.id;
+      img_ref = "images/" + props.row.id;
       setUploadingImage(true);
     }
 
@@ -93,7 +93,7 @@ export default function CampaignRow() {
     <React.Fragment>
       <TableRow key={props.row.name}>
         <TableCell>
-          <IconButton 
+          <IconButton
             aria-label="expand row" size="small"
             onClick={() => setOpen(state => !state)}
             disabled={disableInteraction()}
@@ -104,7 +104,7 @@ export default function CampaignRow() {
         <TableCell component="th" scope="row">
           {props.row.name}
         </TableCell>
-        <TableCell align="center"><img src={props.row.systemURL} width="32" alt={props.row.system}/></TableCell>
+        <TableCell align="center"><img src={props.row.systemURL} width="32" alt={props.row.system} /></TableCell>
         <TableCell>{props.row.created}</TableCell>
         <TableCell>{props.row.modified}</TableCell>
       </TableRow>
@@ -117,17 +117,17 @@ export default function CampaignRow() {
                   <TextField
                     id="name" label="Nom"
                     value={name}
-                    onChange={event=>setName(event.target.value)}
+                    onChange={event => setName(event.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <FormControl style={{minWidth: 120}}>
+                  <FormControl style={{ minWidth: 120 }}>
                     <InputLabel id="system-select-label">Système</InputLabel>
                     <Select
                       labelId="system-select-label"
                       id="system-select"
                       value={selectedSystem}
-                      onChange={event=>setSelectedSystem(event.target.value)}
+                      onChange={event => setSelectedSystem(event.target.value)}
                     >
                       {
                         Object.keys(systems).map(key => (
@@ -142,16 +142,16 @@ export default function CampaignRow() {
                   <Button variant="contained" component="label">
                     Parcourir
                     <input
-                        type="file" hidden accept="image/*"
+                      type="file" hidden accept="image/*"
                       onChange={event => setImage(event.target.files[0])}
                     />
                   </Button>
                   <Typography variant="caption">
-                    { image ? image.name : "" }
+                    {image ? image.name : ""}
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                <Typography variant="subtitle1">Résumé : </Typography>
+                  <Typography variant="subtitle1">Résumé : </Typography>
                   <Button variant="contained" component="label">
                     Parcourir
                     <input
@@ -161,11 +161,11 @@ export default function CampaignRow() {
                     />
                   </Button>
                   <Typography variant="caption">
-                    { pdf ? pdf.name : "" }
+                    {pdf ? pdf.name : ""}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Box display="flex" justifyContent={{xs:"center",md:"right"}} marginRight="10px">
+                  <Box display="flex" justifyContent={{ xs: "center", md: "right" }} marginRight="10px">
                     <Button
                       color="primary" variant="contained"
                       onClick={() => handleValidate()}
@@ -177,9 +177,9 @@ export default function CampaignRow() {
               </Grid>
               <Box
                 className={classes.disabler}
-                display={disableInteraction()?'flex':'none'}
+                display={disableInteraction() ? 'flex' : 'none'}
               >
-                <CircularProgress/>
+                <CircularProgress />
               </Box>
             </Box>
           </Collapse>
