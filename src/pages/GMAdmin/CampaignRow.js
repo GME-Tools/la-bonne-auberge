@@ -52,7 +52,7 @@ export default function CampaignRow(props) {
         props.onUpdate();
       })
     }
-  }, [firebase, updateData, props.row.id, props.onUpdate])
+  }, [firebase, updateData, props])
 
   const disableInteraction = () => {
     return uploadingImage || uploadingPdf || updateData
