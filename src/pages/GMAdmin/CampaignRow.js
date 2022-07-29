@@ -12,7 +12,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useFirebase } from 'context/FirebaseContext';
 import useStyles from './GMAdmin_css';
 
-export default function CampaignRow() {
+export default function CampaignRow(props) {
   const [open, setOpen] = useState(false);
   const [pdf, setPdf] = useState(null);
   const [image, setImage] = useState(null);
