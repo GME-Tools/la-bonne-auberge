@@ -4,11 +4,11 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, signOut } from 'firebase/auth';
 import { GoogleAuthProvider } from "firebase/auth";
 
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, Timestamp } from 'firebase/firestore';
 import { collection, doc, getDoc, getDocs, addDoc, setDoc, deleteDoc } from 'firebase/firestore';
 
 import { getStorage } from "firebase/storage";
-import { ref, getDownloadURL } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ class Firebase {
     this.storage = getStorage(this.app);
   }
 
-  getNow = () => this.db.Timestamp.now();
+  getNow = () => Timestamp.now();
   
   // Auth
   authUser = () => this.auth.currentUser;
@@ -64,7 +64,7 @@ class Firebase {
   // Storage
   getFile = path => getDownloadURL(ref(this.storage, path));
   getSystemImage = system => this.getSystem(system).then(doc => getDownloadURL(ref(this.storage, doc.data().logo)));
-  //updateFile = (refFile, file) => ref((this.storage,refFile).put(file).then(() => console.log("fini"));
+  updateFile = (refFile, file) => uploadBytes(ref(this.storage,refFile),file).then(() => console.log("fini"));
 }
 
 export default Firebase;

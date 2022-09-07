@@ -131,7 +131,7 @@ export default function CampaignRow(props) {
                     >
                       {
                         Object.keys(systems).map(key => (
-                          <MenuItem value={key}>{systems[key].name}</MenuItem>
+                          <MenuItem value={key} key={key}>{systems[key].name}</MenuItem>
                         ))
                       }
                     </Select>
