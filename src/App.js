@@ -27,6 +27,7 @@ function LandingRoutes() {
         <Route path=':page' element={<Blog />} />
       </Route>
       <Route path={routes.ROOT} element={<Landing />} />
+      <Route path="/:pageId" element={<Blog />} />
     </Routes>
   );
 }
