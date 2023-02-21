@@ -6,12 +6,12 @@ import Footer from 'components/Footer/Footer';
 import Landing from "pages/Landing/Landing";
 import Campaigns from "pages/Campaigns/Campaigns";
 import GMAdmin from "pages/GMAdmin/GMAdmin";
+import Blog from "pages/Blog/Blog";
 //import DiceTableAdmin from "pages/DiceTable/DiceTableAdmin";
 //import DiceTable from "pages/DiceTable";
 
 import * as routes from "config/routes"
 
-function Blog() { return <div>Blog</div> }
 function DiceTableAdmin() { return <div>Dice Table Admin</div> }
 function DiceTable() { return <div>Dice Table</div> }
 

@@ -1,0 +1,29 @@
+.notion-header {
+  display: none;
+}
+
+.notion-page-icon-hero {
+  display: none;
+}
+
+.notion-page-has-cover {
+  margin-top: -120px;
+  padding-top: 0
+}
+
+.notion-block-0dfb1a04f1324f08aba19c976ce5534e {
+  font-family: 'Goudy Bookletter 1911',serif;
+  color: white;
+}
+
+.notion-block-f0ba6df900164032b41d31f6b950190d {
+  display: none;
+}
+
+h1 {
+  font-family: 'Goudy Bookletter 1911',serif;
+  font-variant: small-caps;
+  font-weight: 300;
+  font-size: 3.75rem;
+  color: white;
+}
