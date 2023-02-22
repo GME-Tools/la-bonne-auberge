@@ -18,7 +18,7 @@ export default makeStyles(theme => ({
   },
 
   pageFooter: {
-    marginTop: '30px'
+    marginTop: "30px"
   },
 
   footerLinks: {

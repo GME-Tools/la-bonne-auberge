@@ -13,7 +13,7 @@ export default function Landing() {
     <div className={classes.mainContent}>
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
-          <Typography component="h1" variant="h2" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom>
             La Bonne Auberge
           </Typography>
           <Typography variant="h5" align="center" paragraph>

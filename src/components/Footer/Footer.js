@@ -25,7 +25,7 @@ export default function Footer() {
       <Grid container className={classes.footerLinks}>
         <Grid item xs={12} sm={6} className={classes.logoImage}>
           <Link className={classes.decoratedLink} to={routes.ROOT}>
-            <img src="logo192.png" alt="" width='64' />
+            <img src="/logo192.png" alt="" width='64' />
             <Typography variant="body1">La Bonne Auberge</Typography>
             <Typography variant="body2">
                 Copyright © La Bonne Auberge (2020-{(new Date().getFullYear())})
