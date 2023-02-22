@@ -3,10 +3,11 @@ import { NotionRenderer } from 'react-notion-x';
 import { Collection } from 'react-notion-x/build/third-party/collection';
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import React, { useCallback, useEffect, useState } from 'react';
+import { getPageTitle } from "notion-utils";
 
 import 'react-notion-x/src/styles.css';
 import './Blog.css';
-import { Box, Fab, Zoom } from '@mui/material';
+import { Box, Fab, Typography, Zoom } from '@mui/material';
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
@@ -49,29 +50,40 @@ function Blog(props) {
     // eslint-disable-next-line
   }, [page])
 
-  return <React.Fragment>
-    <NotionRenderer
-      recordMap={recordMap}
-      fullPage={true}
-      mapPageUrl={mapPageUrl}
-      components={{
-        Collection,
-        Pdf
-      }}/>
-    <Zoom in={trigger}>
-      <Box
-        role="presentation"
-        sx={{
-          position: "fixed",
-          bottom: 80,
-          right: 80,
-          zIndex: 1,
-        }}
-      >
-        <Fab onClick={scrollToTop} ><KeyboardArrowUpIcon /></Fab>
-      </Box>
-    </Zoom>
-  </React.Fragment>
+  return (
+    <div className="blogWrapper">
+      <div className="blogHeroContent">
+        <Typography variant="h2" sx={{fontSize: "40px"}} gutterBottom>La Bonne Auberge</Typography>
+        <Typography variant="h5" sx={{fontSize: "20px"}} paragraph>Un blog sur le Jeu de Rôle en Solo</Typography>
+      </div>
+
+      {
+        (page !== "home") &&
+        <div style={{padding: "20px 110px 0px 110px", marginBottom: "-50px"}}><Typography variant="h4" sx={{color: "black"}}>{getPageTitle(recordMap)}</Typography></div>
+      }
+      <NotionRenderer
+        recordMap={recordMap}
+        fullPage={false}
+        mapPageUrl={mapPageUrl}
+        components={{
+          Collection,
+          Pdf
+        }}/>
+      <Zoom in={trigger}>
+        <Box
+          role="presentation"
+          sx={{
+            position: "fixed",
+            bottom: 80,
+            right: 80,
+            zIndex: 1,
+          }}
+        >
+          <Fab onClick={scrollToTop} ><KeyboardArrowUpIcon /></Fab>
+        </Box>
+      </Zoom>
+    </div>
+  )
 }
 
 export default Blog;
