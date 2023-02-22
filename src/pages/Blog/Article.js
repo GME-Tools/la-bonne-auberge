@@ -8,12 +8,31 @@ import 'react-notion-x/src/styles.css';
 import './Blog.css';
 import { useParams } from 'react-router-dom';
 import { Box, Fab, Zoom } from '@mui/material';
+import Hero from "components/Hero/Hero";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { getPageTitle } from "notion-utils";
+import { defaultMapImageUrl as mapImageUrl } from "react-notion-x";
 
 const mapPageUrl = (pageId) => {
   pageId = (pageId || '').replace(/-/g, '')
   return "/blog/"+pageId
+}
+
+const getCoverImage = (recordMap) => {
+  const pageBlock = recordMap.block && recordMap.block[Object.keys(recordMap.block)[0]]?.value
+  if (pageBlock && pageBlock.format) {
+    return mapImageUrl(pageBlock.format.page_cover, pageBlock);
+  }
+  return null;
+}
+
+const getCoverImagePosition = (recordMap) => {
+  const pageBlock = recordMap.block && recordMap.block[Object.keys(recordMap.block)[0]]?.value
+  if (pageBlock && pageBlock.format) {
+    return 100*pageBlock.format.page_cover_position;
+  }
+  return 0;
 }
 
 function Blog() {
@@ -38,31 +57,33 @@ function Blog() {
   useEffect(() => {
     getData();
     // eslint-disable-next-line
-  }, [])
+  }, [pageId])
 
-  return <React.Fragment>
-    <NotionRenderer
-      recordMap={recordMap}
-      
-      mapPageUrl={mapPageUrl}
-      components={{
-        Collection,
-        Pdf
-      }}/>
-    <Zoom in={trigger}>
-      <Box
-        role="presentation"
-        sx={{
-          position: "fixed",
-          bottom: 80,
-          right: 80,
-          zIndex: 1,
-        }}
-      >
-        <Fab onClick={scrollToTop} ><KeyboardArrowUpIcon /></Fab>
-      </Box>
-    </Zoom>
-  </React.Fragment>
+  return (
+    <div className="blogWrapper">
+      { recordMap && <Hero image={getCoverImage(recordMap)} position={getCoverImagePosition(recordMap)} align="center" title={getPageTitle(recordMap)} /> }
+      <NotionRenderer
+        recordMap={recordMap}
+        mapPageUrl={mapPageUrl}
+        components={{
+          Collection,
+          Pdf
+        }}/>
+      <Zoom in={trigger}>
+        <Box
+          role="presentation"
+          sx={{
+            position: "fixed",
+            bottom: 80,
+            right: 80,
+            zIndex: 1,
+          }}
+        >
+          <Fab onClick={scrollToTop} ><KeyboardArrowUpIcon /></Fab>
+        </Box>
+      </Zoom>
+    </div>
+  )
 }
 
 export default Blog;

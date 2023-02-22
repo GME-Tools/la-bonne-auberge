@@ -2,13 +2,6 @@
   background-color: white;
 }
 
-.blogHeroContent {
-  background-image: url(assets/hero.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 100px 100px 20px 100px;
-}
-
 .notion {
   margin-bottom: -30px;
   padding-top: 50px;

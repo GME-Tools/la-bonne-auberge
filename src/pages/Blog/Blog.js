@@ -8,8 +8,11 @@ import { getPageTitle } from "notion-utils";
 import 'react-notion-x/src/styles.css';
 import './Blog.css';
 import { Box, Fab, Typography, Zoom } from '@mui/material';
+import Hero from "components/Hero/Hero";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+
+import hero from "assets/hero.jpg";
 
 const mapPageUrl = (pageId) => {
   pageId = (pageId || '').replace(/-/g, '')
@@ -52,11 +55,7 @@ function Blog(props) {
 
   return (
     <div className="blogWrapper">
-      <div className="blogHeroContent">
-        <Typography variant="h2" sx={{fontSize: "40px"}} gutterBottom>La Bonne Auberge</Typography>
-        <Typography variant="h5" sx={{fontSize: "20px"}} paragraph>Un blog sur le Jeu de Rôle en Solo</Typography>
-      </div>
-
+      <Hero image={hero} align="left" title="La Bonne Auberge" subtitle="Un blog sur le Jeu de Rôle en Solo" position={50} />
       {
         (page !== "home") &&
         <div style={{padding: "20px 110px 0px 110px", marginBottom: "-50px"}}><Typography variant="h4" sx={{color: "black"}}>{getPageTitle(recordMap)}</Typography></div>
