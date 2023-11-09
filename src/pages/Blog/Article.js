@@ -61,10 +61,6 @@ function Blog() {
 
   return (
     <div className="blogWrapper">
-      <meta 
-        name="description"
-        content={getPageTitle(recordMap)}
-      />
       { recordMap && <Hero image={getCoverImage(recordMap)} position={getCoverImagePosition(recordMap)} align="center" title={getPageTitle(recordMap)} /> }
       <NotionRenderer
         recordMap={recordMap}
