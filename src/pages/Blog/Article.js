@@ -3,6 +3,7 @@ import { NotionRenderer } from 'react-notion-x';
 import { Collection } from 'react-notion-x/build/third-party/collection';
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import React, { useCallback, useEffect, useState } from 'react';
+import {Helmet} from "react-helmet";
 
 import 'react-notion-x/src/styles.css';
 import './Blog.css';
@@ -61,6 +62,15 @@ function Blog() {
 
   return (
     <div className="blogWrapper">
+      { recordMap &&
+        <Helmet>
+          <meta
+            name="description"
+            content={getPageTitle(recordMap)}
+          />
+          <title>La Bonne Auberge - {getPageTitle(recordMap)}</title>
+        </Helmet>
+      }
       { recordMap && <Hero image={getCoverImage(recordMap)} position={getCoverImagePosition(recordMap)} align="center" title={getPageTitle(recordMap)} /> }
       <NotionRenderer
         recordMap={recordMap}
