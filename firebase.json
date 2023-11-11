@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "assets",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,8 +12,8 @@
     ],
     "rewrites": [
       {
-        "source": "**/**",
-        "function": "webApi"
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   },
