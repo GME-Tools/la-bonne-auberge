@@ -33,7 +33,7 @@ function Blog(props) {
   const [recordMap, setRecordMap] = useState();
 
   const getData = async () => {
-    const map = await axios.get("https://Notion-API.bcoudrin.repl.co/page/" + pageMap[page]);
+    const map = await axios.get("https://notion-api-coq4.onrender.com/page/" + pageMap[page]);
     setRecordMap(map.data);
   }
 
